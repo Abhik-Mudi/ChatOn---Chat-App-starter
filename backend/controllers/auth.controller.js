@@ -12,7 +12,9 @@ export const signup= async (req, res)=>{
 
         const user=await User.findOne({username})
 
-        if(user) return res.status(400).json({error: "Username already exists"})
+        if(user){ 
+            return res.status(200).json({message: "User already registered"})
+        }
 
         const hashedPassword=await bcrypt.hash(password, 10);
         

@@ -1,40 +1,27 @@
 import React from 'react'
+import useGetConversation from '../../hooks/useGetConversation'
 
 const Users = () => {
+    const {loading, conversations}=useGetConversation();
+    console.log(conversations);
+    
     return (
         <div className='flex flex-col h-[65vh] overflow-auto'>
-            <div className='flex gap-2 hover:bg-white/20 rounded-3xl px-3 py-2 items-center'>
-                <div className="avatar avatar-online">
-                    <div className="w-10 rounded-full">
-                        <img src="https://img.daisyui.com/images/profile/demo/gordon@192.webp" />
+            {loading ? (
+                <span className='loading loading-spinner'></span>
+            ) : (
+                conversations.map((conversation, idx) => (
+                    <div key={idx} className='flex gap-2 hover:bg-white/20 rounded-3xl px-3 py-2 items-center'>
+                        <div className="avatar avatar-online">
+                            <div className="w-10 rounded-full">
+                                <img src={conversation.profilePic} alt="User avatar" />
+                            </div>
+                        </div>
+                        <span className='font-semibold'>{conversation.fullname || "Unknown User"}</span>
                     </div>
-                </div>
-                <span className='font-semibold'>John Doe</span>
-            </div>
-            <div className='flex gap-2 hover:bg-white/20 rounded-3xl px-3 py-2 items-center'>
-                <div className="avatar avatar-online">
-                    <div className="w-10 rounded-full">
-                        <img src="https://img.daisyui.com/images/profile/demo/gordon@192.webp" />
-                    </div>
-                </div>
-                <span className='font-semibold'>John Doe</span>
-            </div>
-            <div className='flex gap-2 hover:bg-white/20 rounded-3xl px-3 py-2 items-center'>
-                <div className="avatar avatar-online">
-                    <div className="w-10 rounded-full">
-                        <img src="https://img.daisyui.com/images/profile/demo/gordon@192.webp" />
-                    </div>
-                </div>
-                <span className='font-semibold'>John Doe</span>
-            </div>
-            <div className='flex gap-2 hover:bg-white/20 rounded-3xl px-3 py-2 items-center'>
-                <div className="avatar avatar-online">
-                    <div className="w-10 rounded-full">
-                        <img src="https://img.daisyui.com/images/profile/demo/gordon@192.webp" />
-                    </div>
-                </div>
-                <span className='font-semibold'>John Doe</span>
-            </div>
+                ))
+            )}
+            
 
 
         </div>
