@@ -13,7 +13,7 @@ export const signup= async (req, res)=>{
         const user=await User.findOne({username})
 
         if(user){ 
-            return res.status(200).json({message: "User already registered"})
+            return res.status(200).json({fullname})
         }
 
         const hashedPassword=await bcrypt.hash(password, 10);
@@ -31,7 +31,7 @@ export const signup= async (req, res)=>{
 
         if(newUser){
             generateToken(newUser._id, res)
-            res.status(201).send(newUser)
+            res.status(201).json({fullname: newUser.fullname, profilePic: newUser.profilePic, id: newUser._id})
         }
         
     } catch (error) {
@@ -50,7 +50,7 @@ export const login=async (req, res)=>{
         bcrypt.compare(password, user.password, async function(err, result) {
             if(result){
                 await generateToken(user._id, res);
-                res.status(201).json({"message":"Login successful"})
+                res.status(201).json({fullname: user.fullname, profilePic: user.profilePic, id: user._id})
             }else{
                 res.status(400).json({error: "Invalid Credentials"});
             }
