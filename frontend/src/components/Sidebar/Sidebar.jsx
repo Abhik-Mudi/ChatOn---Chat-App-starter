@@ -3,6 +3,7 @@ import SearchUser from './SearchUser'
 import Users from './Users'
 import Footer from './Footer'
 
+// This component renders the sidebar which includes a search bar, list of users, and a footer with logout functionality
 const Sidebar = () => {
   return (
     <div className='hidden relative sm:block text-md md:text-xl'>

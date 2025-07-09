@@ -3,6 +3,7 @@ import useGetConversation from '../../hooks/useGetConversation'
 import useConversation from '../../zustand/useConversation';
 import { useSocketContext } from '../../context/SocketContext';
 
+// This component renders a list of users (conversations) in the sidebar
 const Users = () => {
     const { loading, conversations } = useGetConversation();
     const { selectedConversation, setSelectedConversation } = useConversation();

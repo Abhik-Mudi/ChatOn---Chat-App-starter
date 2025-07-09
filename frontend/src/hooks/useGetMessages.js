@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import useConversation from '../zustand/useConversation'
 import toast from 'react-hot-toast';
 
+// This hook fetches messages for the selected conversation from the server
 const useGetMessages = () => {
   const [loading, setLoading] = useState(false)
   const {selectedConversation, messages, setMessages}=useConversation();

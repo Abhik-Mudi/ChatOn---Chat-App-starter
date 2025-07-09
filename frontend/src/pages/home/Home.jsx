@@ -2,6 +2,7 @@ import React from 'react'
 import Sidebar from '../../components/Sidebar/Sidebar'
 import MessageContainer from '../../components/MessageContainer/MessageContainer'
 
+// This component serves as the main home page of the application
 const Home = () => {
   return (
     <div className="min-h-screen min-w-screen flex items-center justify-center bg-cover bg-center">

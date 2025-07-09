@@ -3,6 +3,7 @@ import { useAuthContext } from '../context/AuthContext';
 import toast from 'react-hot-toast';
 import useConversation from '../zustand/useConversation';
 
+// This hook handles sending messages in a conversation
 const useSendMessage = () => {
     const {setAuthUser}=useAuthContext();
     const [loading, setLoading] = useState(false)

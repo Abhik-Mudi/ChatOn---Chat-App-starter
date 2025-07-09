@@ -7,10 +7,13 @@ import { useContext } from "react";
 
 export const SocketContext=createContext();
 
+// This context provides the socket connection and online users list
 export const useSocketContext=()=>{
     return useContext(SocketContext)
 }
 
+// This provider component wraps the application and provides the socket context
+// It connects to the socket server and listens for online users
 export const SocketContextProvider=({children})=>{
     const [socket, setSocket] = useState(null)
     const [onlineUsers, setOnlineUsers] = useState([])

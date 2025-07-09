@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 
+// This schema defines the structure of a message in the database
 const messageSchema=new mongoose.Schema({
     senderId: {
         type: mongoose.Schema.Types.ObjectId,

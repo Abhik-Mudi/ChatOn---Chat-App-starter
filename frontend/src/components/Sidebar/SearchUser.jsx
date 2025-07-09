@@ -4,6 +4,8 @@ import useConversation from '../../zustand/useConversation';
 import useGetConversation from '../../hooks/useGetConversation';
 import toast from 'react-hot-toast';
 
+// This component allows users to search for other users by their full name
+// When a user is found, it sets the selected conversation to that user
 const SearchUser = () => {
   const [search, setSearch] = useState("")
   const {setSelectedConversation}=useConversation()

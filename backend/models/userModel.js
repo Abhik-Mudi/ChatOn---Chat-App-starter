@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 
+// This schema defines the structure of a user in the database
 const userSchema=new mongoose.Schema({
     fullname: {
         type: String,

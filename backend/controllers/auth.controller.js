@@ -2,6 +2,9 @@ import User from "../models/userModel.js"
 import generateToken from "../utils/generateToken.js";
 import bcrypt from "bcryptjs";
 
+// This function handles user signup
+// It checks if the passwords match, if the user already exists, hashes the password, and creates a new user
+// If successful, it generates a token and sends the user data back in the response
 export const signup= async (req, res)=>{
     try {
         const {fullname, username, password, confirmPassword, gender}= req.body;
@@ -40,6 +43,9 @@ export const signup= async (req, res)=>{
     }
 }
 
+// This function handles user login
+// It checks if the user exists, compares the provided password with the stored hashed password,
+// and if successful, generates a token and sends the user data back in the response
 export const login=async (req, res)=>{
     try {
         const {username, password}=req.body;
@@ -62,6 +68,8 @@ export const login=async (req, res)=>{
     }
 }
 
+// This function handles user logout
+// It clears the JWT cookie and sends a success message back in the response
 export const logout=async (req, res)=>{
     try {
         res.cookie("jwt", "", {maxAge: 0});

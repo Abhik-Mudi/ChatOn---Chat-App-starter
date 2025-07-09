@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import useSignup from '../../hooks/useSignup'
 
+// This component renders the signup page
 const Signup = () => {
     const {loading, signUp} = useSignup();
     

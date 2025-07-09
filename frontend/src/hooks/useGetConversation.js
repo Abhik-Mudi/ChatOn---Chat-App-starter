@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import toast from 'react-hot-toast'
 
+// This hook fetches the list of conversations (users) from the server
 const useGetConversation = () => {
   const [loading, setLoading] = useState(false)
   const [conversations, setConversations] = useState([])

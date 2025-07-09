@@ -1,3 +1,4 @@
+import path from "path"
 import express from "express"
 import * as dotenv from "dotenv"
 import cookieParser from "cookie-parser";
@@ -12,18 +13,17 @@ const PORT=process.env.PORT || 3000;
 
 dotenv.config() 
 
+// middlewares
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(cookieParser())
 
-app.get("/", (req, res)=>{
-    res.send("hey")
-})
-
+// API routes
 app.use("/api/auth", authRouter) 
 app.use("/api/messages", messagesRouter) 
 app.use("/api/users", usersRouter) 
 
+// Start the server and connect to MongoDB
 server.listen(PORT, ()=>{
     connectToMongoDB();
     console.log(`server running on port ${PORT}`);

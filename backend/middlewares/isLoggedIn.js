@@ -1,6 +1,8 @@
 import jwt from "jsonwebtoken"
 import User from "../models/userModel.js";
 
+// This middleware checks if the user is logged in by verifying the JWT token
+// If the token is valid, it retrieves the user from the database and attaches it to the request object
 const isLoggedIn=async (req, res, next)=>{
     try {
         const token=req.cookies.jwt;

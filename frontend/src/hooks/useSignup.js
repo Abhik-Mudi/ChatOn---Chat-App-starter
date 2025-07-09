@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react'
 import toast from 'react-hot-toast'
 import { useAuthContext } from '../context/AuthContext'
 
-
+// This hook handles user signup functionality
 const useSignup = () => {
     const {setAuthUser}=useAuthContext();
 

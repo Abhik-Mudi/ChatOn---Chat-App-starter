@@ -9,6 +9,7 @@ import convertMongoDate from '../../utils/mongodbTimeConvert.js';
 import { useSocketContext } from '../../context/SocketContext.jsx';
 import useListenMessages from '../../hooks/useListenMessages.js';
 
+// This component displays the message container where users can send and receive messages
 const NoChatSelected = () => {
     return (
         <div className="flex flex-col items-center justify-center h-full w-full text-center select-none">
@@ -19,11 +20,13 @@ const NoChatSelected = () => {
     )
 }
 
-
+// This component renders the message container where users can view and send messages
+// It listens for incoming messages using a custom hook and allows users to send messages in the selected conversation
 const MessageContainer = () => {
     const { selectedConversation, setSelectedConversation } = useConversation();
     const { authUser } = useAuthContext()
 
+    // Listen for incoming messages using the custom hook
     useListenMessages();
 
     const { sendMessage } = useSendMessage()
@@ -40,12 +43,14 @@ const MessageContainer = () => {
         setMessage("");
     }
 
+    // Clear the selected conversation when the component unmounts
     useEffect(() => {
         return () => {
             setSelectedConversation(null)
         }
     }, [])
 
+    // Scroll to the last message when messages change
     useEffect(() => {
         lastMessageRef.current?.scrollIntoView({behaviour: "smooth"})
     }, [messages])

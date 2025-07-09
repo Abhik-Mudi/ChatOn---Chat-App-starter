@@ -2,7 +2,10 @@ import Conversation from "../models/conversationModel.js"
 import Message from "../models/messageModel.js";
 import { getReceiverSocketId, io } from "../socket/socket.js";
 
-// for sending the messages
+// This function handles sending a message
+// It checks if a conversation exists between the sender and receiver, creates one if it doesn't,
+// creates a new message, updates the conversation with the new message, and emits the new message to the receiver's socket
+// Finally, it sends the new message back in the response
 export const sendMessage=async (req, res)=>{
     try {
         const {message}=req.body;
@@ -42,7 +45,8 @@ export const sendMessage=async (req, res)=>{
     }
 }
 
-// getting the messages of logged user and one specific user
+// This function retrieves messages from a conversation between the sender and receiver
+// It checks if a conversation exists, populates the messages, and sends them back in the response
 export const getMessage=async (req, res)=>{
     try {
         const {id: userToChatId} =req.params;
