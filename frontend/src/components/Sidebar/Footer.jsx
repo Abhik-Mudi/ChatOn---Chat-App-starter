@@ -9,7 +9,7 @@ const Footer = () => {
     {loading ? (
       <span className='loading loading-spinner'></span>
     ):( 
-      <RiLogoutBoxLine className='w-6 h-6 '/>
+      <RiLogoutBoxLine className='w-6 h-6 cursor-pointer'/>
     )}
     </div>
     

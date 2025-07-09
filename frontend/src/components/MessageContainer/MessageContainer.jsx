@@ -6,6 +6,8 @@ import { useAuthContext } from '../../context/AuthContext';
 import useSendMessage from '../../hooks/useSendMessages';
 import useGetMessages from '../../hooks/useGetMessages';
 import convertMongoDate from '../../utils/mongodbTimeConvert.js';
+import { useSocketContext } from '../../context/SocketContext.jsx';
+import useListenMessages from '../../hooks/useListenMessages.js';
 
 const NoChatSelected = () => {
     return (
@@ -21,6 +23,8 @@ const NoChatSelected = () => {
 const MessageContainer = () => {
     const { selectedConversation, setSelectedConversation } = useConversation();
     const { authUser } = useAuthContext()
+
+    useListenMessages();
 
     const { sendMessage } = useSendMessage()
     const { loading, messages } = useGetMessages();
