@@ -18,7 +18,7 @@ ChatOn is a modern real-time chat application built with the MERN stack (MongoDB
 
 ## Tech Stack
 
-- **Frontend:** React, Tailwind CSS, DaisyUI, React Router, React Hot Toast
+- **Frontend:** React, Tailwind CSS, DaisyUI, React Router, React Hot Toast, Zustand(a little bit)
 - **Backend:** Node.js, Express, MongoDB, Mongoose, Socket.io
 - **Authentication:** JWT, bcryptjs, cookie-parser
 
