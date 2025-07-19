@@ -21,15 +21,15 @@ export const signup= async (req, res)=>{
 
         const hashedPassword=await bcrypt.hash(password, 10);
         
-        const boyProfilePic=`https://avatar.iran.liara.run/public/boy?username=${username}`
-        const girlProfilePic=`https://avatar.iran.liara.run/public/girl?username=${username}`
+        const boyProfilePic=`https://avatar.iran.liara.run/public/boy?username=${username}`  
+        const girlProfilePic=`https://avatar.iran.liara.run/public/girl?username=${username}`  
 
         const newUser=await User.create({
             fullname,
             username,
             password: hashedPassword,
             gender,
-            profilePic: gender === "male"? boyProfilePic: girlProfilePic,
+            profilePic: gender === "male"? boyProfilePic: girlProfilePic
         })
 
         if(newUser){
@@ -56,7 +56,7 @@ export const login=async (req, res)=>{
         bcrypt.compare(password, user.password, async function(err, result) {
             if(result){
                 await generateToken(user._id, res);
-                res.status(201).json({fullname: user.fullname, profilePic: user.profilePic, id: user._id})
+                res.status(201).json({fullname: user.fullname, profilePic: user.profilePic ? user.profilePic: `../public/Profile_avatar_placeholder_large.png`, id: user._id})
             }else{
                 res.status(400).json({error: "Invalid Credentials"});
             }

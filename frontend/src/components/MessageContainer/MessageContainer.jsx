@@ -6,7 +6,6 @@ import { useAuthContext } from '../../context/AuthContext';
 import useSendMessage from '../../hooks/useSendMessages';
 import useGetMessages from '../../hooks/useGetMessages';
 import convertMongoDate from '../../utils/mongodbTimeConvert.js';
-import { useSocketContext } from '../../context/SocketContext.jsx';
 import useListenMessages from '../../hooks/useListenMessages.js';
 
 // This component displays the message container where users can send and receive messages
@@ -73,8 +72,12 @@ const MessageContainer = () => {
                                 <div className="chat-image avatar ">
                                     <div className="w-10 rounded-full">
                                         <img
-                                            alt="Tailwind CSS chat bubble component"
+                                            alt="alt"
                                             src={profilePic}
+                                            onError={(e) => {
+                                                e.target.onerror = null;
+                                                e.target.src = "/Profile_avatar_placeholder_large.png"; 
+                                            }}
                                         />
                                     </div>
                                 </div>
